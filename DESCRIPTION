@@ -1,6 +1,6 @@
 Package: rfaScrape
 Title: Scrape and export sqlite files from RFA
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R:
     person("Dan", "McGraw", , "daniel.e.mcgraw@gmail.com", role = c("aut", "cre"))
 Description: A system to scrape and export RFA project data from .sqlite files
@@ -17,8 +17,10 @@ Imports:
     DBI,
     dplyr,
     fst,
+    rlang,
     RSQLite,
     tidyr
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    withr
 Config/testthat/edition: 3
