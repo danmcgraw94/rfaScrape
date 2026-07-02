@@ -1,3 +1,6 @@
+#' @importFrom rlang .data
+NULL
+
 #' Get Data Levels
 #'
 #' Identifies the top-level data category tables in an RFA sqlite project.
@@ -89,7 +92,7 @@ export_2inputdata <- function(con, project_dir) {
     con,
     tables[grepl("^2\\.0", tables)]
   )
-  write.csv(
+  utils::write.csv(
     input_summary,
     file.path(input_dir, "input_data_summary.csv"),
     row.names = FALSE
@@ -107,7 +110,7 @@ export_2inputdata <- function(con, project_dir) {
 
     df <- DBI::dbReadTable(con, tbl)
 
-    write.csv(
+    utils::write.csv(
       df,
       file.path(sub_dir, paste0(file_name, ".csv")),
       row.names = FALSE
@@ -158,7 +161,7 @@ export_vfc_parameters <- function(con, project_dir) {
   }) |>
     dplyr::bind_rows() |>
     dplyr::arrange(.data$erl)
-  write.csv(
+  utils::write.csv(
     lp3_summary,
     file.path(vfc_dir, "vfc_parameters.csv"),
     row.names = FALSE
@@ -202,7 +205,7 @@ export_3analyses <- function(con, project_dir) {
   )
 
   # Export summary
-  write.csv(
+  utils::write.csv(
     analyses_summary,
     file.path(analyses_dir, "summary_of_analyses.csv"),
     row.names = FALSE
@@ -231,7 +234,7 @@ export_3analyses <- function(con, project_dir) {
     )
   }) |>
     dplyr::bind_rows()
-  write.csv(
+  utils::write.csv(
     efc_summary,
     file.path(efc_dir, "0.empirical_frequency_summary.csv"),
     row.names = FALSE
@@ -245,7 +248,7 @@ export_3analyses <- function(con, project_dir) {
       next
     }
 
-    write.csv(
+    utils::write.csv(
       df,
       file.path(efc_dir, paste0(file_name, ".csv")),
       row.names = FALSE
@@ -277,7 +280,7 @@ export_3analyses <- function(con, project_dir) {
     )
   }) |>
     dplyr::bind_rows()
-  write.csv(
+  utils::write.csv(
     fs_summary,
     file.path(fs_dir, "0.seasonality_analysis_summary.csv"),
     row.names = FALSE
@@ -291,7 +294,7 @@ export_3analyses <- function(con, project_dir) {
       next
     }
 
-    write.csv(
+    utils::write.csv(
       df,
       file.path(fs_dir, paste0(file_name, ".csv")),
       row.names = FALSE
@@ -306,7 +309,7 @@ export_3analyses <- function(con, project_dir) {
       next
     }
 
-    write.csv(
+    utils::write.csv(
       df,
       file.path(fs_dir, paste0(file_name, "_events.csv")),
       row.names = FALSE
@@ -336,7 +339,7 @@ export_3analyses <- function(con, project_dir) {
     )
   }) |>
     dplyr::bind_rows()
-  write.csv(
+  utils::write.csv(
     rssd_summary,
     file.path(rssd_dir, "0.res_starting_stage_summary.csv"),
     row.names = FALSE
@@ -350,7 +353,7 @@ export_3analyses <- function(con, project_dir) {
       next
     }
 
-    write.csv(
+    utils::write.csv(
       df,
       file.path(rssd_dir, paste0(file_name, ".csv")),
       row.names = FALSE
@@ -387,7 +390,7 @@ export_4resmodel <- function(con, project_dir) {
     con,
     tables[grepl("^4\\.0", tables)]
   )
-  write.csv(
+  utils::write.csv(
     resmodel_summary,
     file.path(res_model_dir, "0.resmodel_summary.csv"),
     row.names = FALSE
@@ -400,7 +403,7 @@ export_4resmodel <- function(con, project_dir) {
       next
     }
 
-    write.csv(
+    utils::write.csv(
       df,
       file.path(res_model_dir, paste0(file_name, ".csv")),
       row.names = FALSE
@@ -459,10 +462,10 @@ export_5results <- function(con, project_dir) {
     con,
     tables[grepl("^5\\.0", tables)]
   ) |>
-    dplyr::arrange(`Name`)
+    dplyr::arrange(.data$Name)
 
   # Export summary
-  write.csv(
+  utils::write.csv(
     results_summary,
     file.path(sims_dir, "0.summary_of_simulations.csv"),
     row.names = FALSE
@@ -521,16 +524,16 @@ export_5results <- function(con, project_dir) {
     )
   }) |>
     dplyr::bind_rows() |>
-    dplyr::select(sim, hydrograph, ih_weight) |>
-    tidyr::pivot_wider(names_from = hydrograph, values_from = ih_weight)
+    dplyr::select(.data$sim, .data$hydrograph, .data$ih_weight) |>
+    tidyr::pivot_wider(names_from = "hydrograph", values_from = "ih_weight")
 
   full_setup_summary <- dplyr::left_join(
     sim_summary,
     ih_weights_summary,
-    dplyr::join_by(sim)
+    by = "sim"
   )
 
-  write.csv(
+  utils::write.csv(
     full_setup_summary,
     file.path(sims_dir, "1.simulation_setup.csv"),
     row.names = FALSE
@@ -550,7 +553,7 @@ export_5results <- function(con, project_dir) {
         file.path(tabular_results_dir, paste0(file_name, ".fst"))
       )
     } else {
-      write.csv(
+      utils::write.csv(
         df,
         file.path(tabular_results_dir, paste0(file_name, ".csv")),
         row.names = FALSE
@@ -565,7 +568,7 @@ export_5results <- function(con, project_dir) {
     if (nrow(df) == 0) {
       next
     }
-    write.csv(
+    utils::write.csv(
       df,
       file.path(param_dir, paste0(file_name, ".csv")),
       row.names = FALSE
@@ -579,7 +582,7 @@ export_5results <- function(con, project_dir) {
     if (nrow(df) == 0) {
       next
     }
-    write.csv(
+    utils::write.csv(
       df,
       file.path(stage_freq_dir, paste0(file_name, ".csv")),
       row.names = FALSE
