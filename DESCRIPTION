@@ -1,13 +1,21 @@
 Package: rfaScrape
-Title: What the Package Does (One Line, Title Case)
+Title: Scrape and export sqlite files from RFA
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Authors@R:
+    person("Dan", "McGraw", , "daniel.e.mcgraw@gmail.com", role = c("aut", "cre"))
+Description: A system to scrape and export RFA project data from .sqlite files
+    using the `DBI` and `RSQLite` packages. Provide the path to the RFA .sqlite file
+    and `rfaScrape` will read the file and export the data to organized
+    directories. This package will support 'rfaR' in the future.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 URL: https://github.com/danmcgraw94/rfaScrape
 BugReports: https://github.com/danmcgraw94/rfaScrape/issues
+Imports:
+    DBI,
+    dplyr,
+    fst,
+    RSQLite,
+    tidyr
