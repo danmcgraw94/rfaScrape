@@ -4,7 +4,7 @@
 #' VFC parameters, analyses, reservoir models, and simulation results to
 #' organized CSV files within a project-named directory.
 #'
-#' @param sqlite_path Path to the RFA project `.sqlite` file.
+#' @param sqlite_path Path to the RFA project `.rfa.sqlite` file.
 #' @param base_dir The parent directory where the project export folder
 #' will be created. Default is the current working directory (from `getwd()`).
 #'
@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' scrape_rfa_sqlite("path/to/rfa_proejct.sqlite", "C:/export_location")
+#' scrape_rfa_sqlite("path/to/rfa_proejct.rfa.sqlite", "C:/export_location")
 #' }
 #'
 #' @export
