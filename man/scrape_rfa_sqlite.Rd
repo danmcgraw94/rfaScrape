@@ -7,7 +7,7 @@
 scrape_rfa_sqlite(sqlite_path, base_dir = getwd())
 }
 \arguments{
-\item{sqlite_path}{Path to the RFA project \code{.sqlite} file.}
+\item{sqlite_path}{Path to the RFA project \code{.rfa.sqlite} file.}
 
 \item{base_dir}{The parent directory where the project export folder
 will be created. Default is the current working directory (from \code{getwd()}).}
@@ -21,8 +21,7 @@ VFC parameters, analyses, reservoir models, and simulation results to
 organized CSV files within a project-named directory.
 }
 \examples{
-\dontrun{
-scrape_rfa_sqlite("path/to/rfa_proejct.sqlite", "C:/export_location")
-}
+sample_path <- system.file("extdata", "example_RFA_project.rfa.sqlite", package = "rfaScrape")
+scrape_rfa_sqlite(sample_path, base_dir = tempdir())
 
 }

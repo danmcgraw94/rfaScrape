@@ -7,7 +7,7 @@
 
 <!-- badges: end -->
 
-The rfaScrape package helps export data and results from RMC-RFA projects. The package aims to improve organization and reporting efficiency by scraping/exporting RFA project data from `.sqlite` files into organized CSV directories. This package will be incorporated in future developments of `rfaR`.
+The rfaScrape package helps export data and results from RMC-RFA projects. The package aims to improve organization and reporting efficiency by scraping/exporting RFA project data from `.rfa.sqlite` files into organized CSV directories. This package will be incorporated in future developments of `rfaR`.
 
 ## Installation
 
@@ -18,13 +18,13 @@ remotes::install_github("danmcgraw94/rfaScrape")
 
 ## Quick Start
 
+A small example RFA project is included with the package, so you can try it immediately without your own `.rfa.sqlite` file.
+
 ```r
 library(rfaScrape)
 
-sqlite_file <- "~/path/to/my_rfa_project.rfa.sqlite"
-out_dir <- "/data/rfa_scrape/rfa_outputs"
-
-scrape_rfa_sqlite(sqlite_file, out_dir)
+sample_path <- system.file("extdata", "example_RFA_project.rfa.sqlite", package = "rfaScrape")
+scrape_rfa_sqlite(sample_path, base_dir = tempdir())
 ```
 
 ## Further Reading

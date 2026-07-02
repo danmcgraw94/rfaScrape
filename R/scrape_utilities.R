@@ -157,7 +157,7 @@ export_vfc_parameters <- function(con, project_dir) {
     )
   }) |>
     dplyr::bind_rows() |>
-    dplyr::arrange(erl)
+    dplyr::arrange(.data$erl)
   write.csv(
     lp3_summary,
     file.path(vfc_dir, "vfc_parameters.csv"),

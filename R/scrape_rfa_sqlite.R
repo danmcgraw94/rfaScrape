@@ -11,9 +11,8 @@
 #' @returns The file path of the top-level project export directory.
 #'
 #' @examples
-#' \dontrun{
-#' scrape_rfa_sqlite("path/to/rfa_proejct.rfa.sqlite", "C:/export_location")
-#' }
+#' sample_path <- system.file("extdata", "example_RFA_project.rfa.sqlite", package = "rfaScrape")
+#' scrape_rfa_sqlite(sample_path, base_dir = tempdir())
 #'
 #' @export
 scrape_rfa_sqlite <- function(sqlite_path, base_dir = getwd()) {

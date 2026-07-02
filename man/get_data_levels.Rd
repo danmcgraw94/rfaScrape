@@ -18,7 +18,7 @@ Identifies the top-level data category tables in an RFA sqlite project.
 }
 \examples{
 \dontrun{
-  con <- DBI::dbConnect(RSQLite::SQLite(), "path/to/file.sqlite")
+  con <- DBI::dbConnect(RSQLite::SQLite(), "path/to/file.rfa.sqlite")
   data_levels <- get_data_levels(con)
 }
 }

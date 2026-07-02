@@ -20,7 +20,7 @@ Creates the top-level export directory for a given RFA project.
 }
 \examples{
 \dontrun{
-con <- DBI::dbConnect(RSQLite::SQLite(), "path/to/file.sqlite")
+con <- DBI::dbConnect(RSQLite::SQLite(), "path/to/file.rfa.sqlite")
 project_name <- get_project_name(con)
 project_folder <- make_project_folder(project_name)
 }
