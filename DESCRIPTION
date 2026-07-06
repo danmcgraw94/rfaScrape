@@ -1,8 +1,12 @@
 Package: rfaScrape
 Title: Scrape and export sqlite files from RFA
 Version: 0.1.0
-Authors@R:
-    person("Dan", "McGraw", , "daniel.e.mcgraw@gmail.com", role = c("aut", "cre"),comment = c("P.E., USACE RMC", ORCID = "0009-0006-4859-0179"))
+Authors@R: c(
+    person("Dan", "McGraw", , "daniel.e.mcgraw@gmail.com", role = c("aut", "cre"),
+           comment = c("P.E., USACE RMC", ORCID = "0009-0006-4859-0179")),
+    person("Davis", "Murphy", , "charles.d.murphy@usace.army.mil", role = c("ctb"),
+           comment = c("P.E., USACE LRL", "GitHub: https://github.com/cdavism"))
+  )
 Description: A system to scrape and export RFA project data from rfa.sqlite files
     using the `DBI` and `RSQLite` packages. Provide the path to the RFA .sqlite file
     and `rfaScrape` will read the file and export the data to organized
