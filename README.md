@@ -28,6 +28,10 @@ sample_path <- system.file("extdata", "example_RFA_project.rfa.sqlite", package 
 scrape_rfa_sqlite(sample_path, base_dir = tempdir())
 ```
 
+## Acknowledgments
+
+Table-parsing & export methods were informed by a Python script originally written by Davis Murphy ([@cdavism](https://github.com/cdavism)).
+
 ## Further Reading
 
 - [DBI](https://github.com/r-dbi/DBI): Used to open connections to .sqlite database files
